@@ -1,0 +1,171 @@
+@font-face {
+    font-family: 'IBM Plex Mono';
+    src: url('fonts/IBMPlexMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: #0d1116;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+
+    display: flex;              
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;          
+}
+
+.grid {
+    display: grid;
+    gap: 100px;
+    justify-items: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.grid.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.grid .last-row {
+    display: contents; 
+}
+
+.grid .last-row > .item {
+    justify-self: center;
+}
+
+.item {
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.item a:hover {
+    color: inherit;
+}
+
+.item img {
+    width: 150px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.grid:hover .item img {
+    filter: brightness(60%);
+}
+
+.grid .item:hover img {
+    filter: brightness(110%);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+.grid .item:hover img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 70%; /* wider shine bar */
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    animation: shine 1.2s forwards;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+@keyframes shine {
+    100% {
+        left: 130%;
+    }
+}
+
+.label {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #F5F5F7;
+    line-height: 1.2;
+}
+
+.value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 100%;
+    left: 5%;
+    color: #F5F5F7;
+}
+
+#datetime {
+    position: absolute;
+    top: 2%; 
+
+    font-size: 85%;
+}
+
+.title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 100%;
+    color: #F5F5F7;
+}
+
+#title {
+    position: absolute;
+    top: 2%; 
+
+    font-size: 85%;
+}
+
+#source {
+    position: absolute;
+    bottom: 2%; 
+    font-size: 85%;
+    text-decoration: none
+}
+
+.source {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 100%;
+    left: 5%;
+    color: #F5F5F7;
+}
+
+/*
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+*/
